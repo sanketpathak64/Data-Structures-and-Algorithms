@@ -3,10 +3,10 @@
 int main()
 {
     int i,j,val,a[M];
-    printf("enter array data");
+    printf("enter elements of array data");
     for(i=0;i<M;i++)
         scanf("%d",&a[i]);
-    printf("before sorting\n");
+    printf("before sorting array elements are\n");
     for(i=0;i<5;i++)
         printf("%4d",a[i]);
     for(i=1;i<M;i++)
