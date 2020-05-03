@@ -6,7 +6,11 @@ using namespace std;
 /***********************************
 contributed by sanketpathak64
 Implemented following functions for doubly linked list
-
+1.add node at beginning and end
+2.add node at specified pos //little issue
+3.delete from start and end 
+4.delete at specified position //little issue
+5.display list from start to end and vice a versa
 ***********************************/
 
 //Node for doubly linked list
@@ -184,15 +188,84 @@ void insertAt(int data,int pos) //not working properly inserts element at +1 pla
 	a->next->prev = b;
 }
 
+//function to delete a element at specified pos
+void delPos(int pos) //same issue as in insertAt deletes +1 place
+{
+	NODE *a = st;
+	if(pos>length() || pos<0)
+	{
+		cout<<"invalid pos\n";
+		return ;
+	}
+	while(pos--)
+		a = a->next;
+	
+	NODE *b = a;
+	b->next = a->next->next;
+	b->next->prev = a;
+}
+
 int main()
 {
-	addBegin(4);
-	addEnd(6);
-	addBegin(3);
-	addBegin(2);
-	addBegin(1);
-	dSE();
-	dES();
-	insertAt(100,0);
-	dSE();
+	int pos,opt;
+	while(1)
+	{
+		cout<<"\n1.add at begin\n2.add at end\n3.delete at begin\n4.delete end\n";
+		cout<<"5.delete at specified position\n6.display DLL from start to end\n7.display DLL from end to start";
+		cout<<"\n8.inserting a node at a desired position\n";
+		cout<<"\n\nenter your option";
+		
+		int option, data, pos;
+		cin >> option;
+		
+		if(option > 8 || option < 0)
+			break;
+		
+		switch(option)
+		{
+			case 1:
+				cout<<"\nenter value to add ";
+				cin>>data;
+				addBegin(data);
+				break;
+				
+			case 2:
+				cout<<"\nenter value to add ";
+				cin>>data;
+				addEnd(data);
+				break;
+			
+			case 3:
+				delFirst();
+				break;
+			
+			case 4:
+				delLast();
+				break;
+				
+			case 5:
+				cout<<"\nenter position of element use 0 based indexing";
+				cin>>pos;
+				delPos(pos);
+				break;
+			
+			case 6:
+				dSE();
+				break;
+			
+			case 7:
+				dES();
+				break;
+				
+			case 8:
+				cout<<"\nenter data ";
+				cin>>data;
+				cout<<"\nenter position use 0 based indexing ";
+				cin>>pos;
+				insertAt(data, pos);
+				break;
+				
+				
+		}	
+	}
 }
