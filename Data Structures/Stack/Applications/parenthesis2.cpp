@@ -2,7 +2,7 @@
 #include<cstdlib>
 #include<bits/stdc++.h>
 using namespace std;
-#define N 20
+#define N 64
 /***********************************
 contributed by sanketpathak64
 This is array implementation of stack
