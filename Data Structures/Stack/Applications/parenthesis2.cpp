@@ -7,7 +7,11 @@ using namespace std;
 contributed by sanketpathak64
 This is array implementation of stack
 program to find whether expression's parenthesis are balanced or not
-this is valid {([{}])}
+Example => valid {}, {[()]}, {([{}])}
+invalid {[(]}), {]
+
+'{' can't go inside '[', '('
+'[' can't go inside '('
 ***********************************/
 char Stack[N];
 
@@ -46,7 +50,24 @@ int main()
 	{
 		if(exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
 		{
+			if(exp[i] == '{')
+			{
+				if(Stack[top]=='[' || Stack[top]=='(')
+				{
+					cout<<"\nInvalid expression\n";
+					return 0;
+				}
+			}
+			else if(exp[i] == '[')
+			{
+				if(Stack[top]=='(')
+				{
+					cout<<"\nInvalid expression\n";
+					return 0;
+				}
+			}
 			push(exp[i]);
+			
 		}
 		else
 		{
@@ -58,7 +79,11 @@ int main()
 					return 0;
 				}
 				char x=pop();
-				if((exp[i]=='(' && x!=')') && (exp[i]=='(' && x!=')') && (exp[i]=='(' && x!=')')) 
+				
+				
+				
+				
+				if((exp[i]==')' && x!='(') || (exp[i]==']' && x!='[') || (exp[i]=='}' && x!='{')) 
 				{
 					cout<<"\nYour expression is not balanced\n";
 					return 0;
