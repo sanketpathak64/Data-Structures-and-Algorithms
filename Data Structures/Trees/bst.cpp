@@ -85,6 +85,47 @@ int max(BT *a)
 	return root->data;
 }
 
+
+
+
+int countLeaves(Node* root)
+{
+  // Your code here
+  if(root==NULL)
+    return 0;
+if(root->left == NULL && root->right==NULL)       
+    return 1; 
+    int left=countLeaves(root->left);
+    int right=countLeaves(root->right);
+    return left+right;
+}
+
+int height(Node* node)
+{
+   // Your code here
+   if(node==NULL)
+    return 0;
+   return 1+max(height(node->left),height(node->right));
+}
+
+
+Node* LCA(Node *root, int n1, int n2)
+{
+    if(root==NULL)
+        return NULL;
+   //Your code here
+   if(n1>root->data && n2>root->data)
+    return LCA(root->right,n1,n2);
+    if(n1<root->data && n2<root->data)
+    return LCA(root->left,n1,n2);
+    
+    return root;
+}
+
+
+
+
+
 int main()
 {
 	BT *tree=NULL;
