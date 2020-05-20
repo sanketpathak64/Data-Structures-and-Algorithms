@@ -43,6 +43,17 @@ void DFS(int s)
     } 
 } 
 
+void recursiveDFS(int s)
+{
+	cout<<s<<" ";
+    visited[s]=true;
+    for(auto i=adj[s].begin();i!=adj[s].end();i++)
+    {
+        if(!visited[*i])
+            recursiveDFS(*i);
+    }
+}
+
 
 
 int main() 
@@ -57,6 +68,8 @@ int main()
 	addEdge(3, 4); 
 	printGraph( V); 
 	DFS(0);
+	cout<<endl;
+//	iterativeDFS(0);
 	
 	return 0; 
 } 
